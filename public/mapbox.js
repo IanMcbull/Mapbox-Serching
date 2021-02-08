@@ -26,7 +26,7 @@ fetch(`/weather?location=${location}`).then(res=>{
     card_header.innerHTML = data.Location;
     weather.innerHTML = `<i class="fas fa-smog fa-2x"></i>  Forecast: ${data.forecast}`;
     timezone.innerHTML = `<i class="far fa-clock fa-2x"></i> Timezone: ${data.timezone}`;
-    temp.innerHTML = `<i class="fas fa-temperature-low fa-2x"></i> Temperature: ${data.temp} Degrees Celsius`;
+    temp.innerHTML = `<i class="fas fa-temperature-low fa-2x"></i> Temperature: ${data.temp}° C`;
     humidity.innerHTML = `<i class="fas fa-thermometer-full fa-2x"></i> Humidity: ${data.humidity}`
 
     card.style.visibility = 'visible';
@@ -56,3 +56,5 @@ fetch(`/weather?location=${location}`).then(res=>{
       }
     })
 })
+
+
