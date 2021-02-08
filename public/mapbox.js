@@ -14,7 +14,7 @@ function clearFields(){
 document.querySelector('.form').addEventListener('submit',(e)=>{
  e.preventDefault();
 let location = document.querySelector('#location').value
-fetch(`http://localhost:4400/weather?location=${location}`).then(res=>{
+fetch(`/weather?location=${location}`).then(res=>{
       return res.json()
     }).then(data=>{
       const card = document.querySelector('.card');
