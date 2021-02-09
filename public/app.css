@@ -59,6 +59,9 @@ body{
     visibility: hidden;
     font-family: 'Poppins','san serif' ;
 }
+.details{
+    font-family: 'Poppins','san serif' ;
+}
 .fas, .far{
     margin-right: 10px;
 }
@@ -83,7 +86,7 @@ body{
     color: coral;
 }
 .fa-temperature-low{
-    color:yellow;
+    color:red;
 }
 .fa-thermometer-full{
    color: teal; 

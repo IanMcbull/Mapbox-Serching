@@ -23,17 +23,18 @@ fetch(`/weather?location=${location}`).then(res=>{
       let timezone = document.querySelector('.timezone');
       let temp = document.querySelector('.temp');
       let humidity = document.querySelector('.humidity');
-    card_header.innerHTML = data.Location;
+    /*card_header.innerHTML = data.Location;
     weather.innerHTML = `<i class="fas fa-smog fa-2x"></i>  Forecast: ${data.forecast}`;
     timezone.innerHTML = `<i class="far fa-clock fa-2x"></i> Timezone: ${data.timezone}`;
     temp.innerHTML = `<i class="fas fa-temperature-low fa-2x"></i> Temperature: ${data.temp}° C`;
     humidity.innerHTML = `<i class="fas fa-thermometer-full fa-2x"></i> Humidity: ${data.humidity}`
 
-    card.style.visibility = 'visible';
+    card.style.visibility = 'visible';*/
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/ianmugenya/ckki4076s0iij17nwulwibawu', // stylesheet location
       center: [data.long, data.lat], // starting position [lng, lat]
+       // bearing in degrees
       zoom: 10 // starting zoom
       });
       var marker = new mapboxgl.Marker()
@@ -47,9 +48,22 @@ fetch(`/weather?location=${location}`).then(res=>{
       Number(data.long) + (Math.random() - 0.5) * 10,
       Number(data.lat) + (Math.random() - 0.5) * 10
       ],
+      pitch: 60, // pitch in degrees
+      bearing: -60,
       essential: true // this animation is considered essential with respect to prefers-reduced-motion
       });
       });
+      var popup = new mapboxgl.Popup({ closeOnClick: false })
+     .setLngLat([data.long, data.lat])
+     .setHTML(`      <div class="details">
+                      <div class="mt-3">
+                      <i class="fas fa-smog"></i>  Forecast: ${data.forecast}<br>
+                      <i class="fas fa-temperature-low "></i> Temperature: ${data.temp}° C<br>
+                      <i class="fas fa-thermometer-full"></i> Humidity: ${data.humidity}%
+                      </div>
+
+                     </div>     `)
+     .addTo(map);
     }).catch(err=>{
       return{
         "message": "something went wrong"
